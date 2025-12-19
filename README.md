@@ -1,7 +1,5 @@
 # Netflix Database (Django + PostgreSQL)
 
----
-
 ## Датасет
 Используется датасет **Netflix Movies and TV Shows** с Kaggle:  
 https://www.kaggle.com/datasets/shivamb/netflix-shows
