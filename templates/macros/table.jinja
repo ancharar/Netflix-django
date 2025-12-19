@@ -1,0 +1,33 @@
+{% macro render_table(title, headers, rows, note=None, min_width=560) %}
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">{{ title }}</h2>
+    {% if note %}<span class="chip">{{ note }}</span>{% endif %}
+  </div>
+
+  <div class="card-body">
+    <div class="table-wrap">
+      <table style="min-width: {{ min_width }}px;">
+        <thead>
+          <tr>
+            {% for h in headers %}<th>{{ h }}</th>{% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% if rows and rows|length > 0 %}
+            {% for row in rows %}
+              <tr>
+                {% for cell in row %}<td>{{ cell }}</td>{% endfor %}
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td class="muted" colspan="{{ headers|length }}">Нет данных</td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endmacro %}

@@ -1,0 +1,39 @@
+{% extends "base.jinja" %}
+{% from "macros/table.jinja" import render_table %}
+
+{% block content %}
+
+<div class="section-title">Справочники</div>
+<div class="grid">
+  {{ render_table("Countries", ["ID","Name"], rows_countries, "первые 30") }}
+  {{ render_table("Genres", ["ID","Name"], rows_genres, "первые 30") }}
+</div>
+
+<div class="grid">
+  {{ render_table("Actors", ["ID","Full name"], rows_actors, "первые 30") }}
+  {{ render_table("Directors", ["ID","Full name"], rows_directors, "первые 30") }}
+</div>
+
+<div class="section-title">Основная сущность</div>
+<div class="grid">
+  {{ render_table("Titles", ["ID","Name","Type","Year","Country"], rows_titles, "первые 30", 760) }}
+  {{ render_table("Title ↔ Genre", ["ID","Title","Genre"], rows_title_genres, "первые 30", 760) }}
+</div>
+
+<div class="grid">
+  {{ render_table("Title ↔ Actor", ["ID","Title","Actor"], rows_title_actors, "первые 30", 760) }}
+  {{ render_table("Title ↔ Director", ["ID","Title","Director"], rows_title_directors, "первые 30", 760) }}
+</div>
+
+<div class="section-title">Статистика</div>
+<div class="grid">
+  {{ render_table("Titles by Country (Top 10)", ["Country","Count"], rows_titles_by_country, "agg: count") }}
+  {{ render_table("Titles by Year (Top 10)", ["Year","Count"], rows_titles_by_year, "agg: count") }}
+</div>
+
+<div class="grid">
+  {{ render_table("Top Genres (Top 10)", ["Genre","Count"], rows_top_genres, "agg: count") }}
+  {{ render_table("Top Actors (Top 10)", ["Actor","Count"], rows_top_actors, "agg: count") }}
+</div>
+
+{% endblock %}
